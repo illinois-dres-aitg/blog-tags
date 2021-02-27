@@ -1,1 +1,1 @@
-# wordpress-plugin-tags
+# blog-tags
