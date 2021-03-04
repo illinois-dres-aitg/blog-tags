@@ -18,6 +18,10 @@ class BlogTags {
         }
     }
 
+    public function show_tags() {
+        return "<h3>Blog Tags</h3>";
+    }
+
     public function deactivate() {
 
     }
@@ -29,3 +33,5 @@ $blog_tags = new BlogTags();
 register_activation_hook(__FILE__, array($blog_tags, 'activate'));
 
 register_deactivation_hook(__FILE__, array($blog_tags, 'deactivate'));
+
+add_shortcode('show_blog_tags', array($blog_tags, 'show_tags'))
