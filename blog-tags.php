@@ -19,17 +19,16 @@ class BlogTags {
     }
 
     public function show_tags() {
-        $output = '';
-        $post_tags = get_the_tags();
-        $separator = ' | ';
+        $tags = get_tags();
+        $html = '<div class="post_tags">';
+        foreach ( $tags as $tag ) {
+            $tag_link = get_tag_link( $tag->term_id );
 
-        if (!empty($post_tags)) {
-            foreach ($post_tags as $tag) {
-                $output .= '<a href="' . get_tag_link($tag->term_id) . '">' . $tag->name . '</a>' . $separator;
-            }
+            $html .= "<a href='{$tag_link}' title='{$tag->name} Tag' class='{$tag->slug}'>";
+            $html .= "{$tag->name}</a>";
         }
-
-        return trim($output, $separator);
+        $html .= '</div>';
+        echo $html;
     }
 
 }
