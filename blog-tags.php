@@ -19,13 +19,15 @@ class BlogTags {
     }
 
     public function show_tags() {
-        $tags = get_tags();
+        $tags = get_tags(array(
+              'taxonomy' => 'post_tag',
+              'orderby' => 'name'));
         $html = '<ul class="post_tags">';
         foreach ( $tags as $tag ) {
             $tag_link = get_tag_link( $tag->term_id );
 
             $html .= "<li><a href='{$tag_link}' title='{$tag->name} Tag' class='{$tag->slug}'>";
-            $html .= "{$tag->name}</a></li>";
+            $html .= "{$tag->name} ({$tag->count} posts)</a></li>";
         }
         $html .= '</ul>';
         echo $html;
