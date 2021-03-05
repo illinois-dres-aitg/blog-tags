@@ -18,6 +18,20 @@ class BlogTags {
         }
     }
 
+    function register_post_type() {
+        register_post_type('blog_tags',
+            array(
+                'labels'      => array(
+                    'name'          => __('Blog Tags', 'textdomain'),
+                    'singular_name' => __('Blog Tag', 'textdomain'),
+                ),
+                    'public'      => true,
+                    'has_archive' => true,
+                    'rewrite'     => array( 'slug' => 'all-blog-tags' ), // my custom slug
+            )
+        );
+    }
+
     private function list_of_tags($tags) {
         $html = '  <ul class="post_tags">';
         foreach ( $tags as $tag ) {
@@ -60,5 +74,7 @@ class BlogTags {
 $blog_tags = new BlogTags();
 
 register_activation_hook(__FILE__, array($blog_tags, 'activate'));
+
+add_action('init', array($blog_tags, 'register_post_type'));
 
 add_shortcode('show_blog_tags', array($blog_tags, 'show_tags'));
