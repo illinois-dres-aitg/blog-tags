@@ -33,7 +33,7 @@ class BlogTags {
     }
 
     public function show_tags() {
-        $html = '<div class="post_tags">'
+        $html = '<div class="post_tags">';
 
         $tags = get_tags(array(
               'taxonomy' => 'post_tag',
