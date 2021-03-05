@@ -19,27 +19,27 @@ class BlogTags {
     }
 
     private function list_of_tags($tags) {
-        $html = '  <ul class="post_tags">';
+        $html = '  <ul class="post_tags">\n';
         foreach ( $tags as $tag ) {
             if ($tag->count > 0) {
                 $tag_link = get_tag_link( $tag->term_id );
 
-                $html .= '    <li><a href="{$tag_link}" class="{$tag->slug}">';
-                $html .= '{$tag->name} ({$tag->count} posts)</a></li>';
+                $html .= "    <li><a href='{$tag_link}' class='{$tag->slug}'>";
+                $html .= "{$tag->name} ({$tag->count} posts)</a></li>\n";
             }
         }
-        $html .= '  </ul>';
+        $html .= '  </ul>\n';
         return $html;
     }
 
     public function show_tags() {
-        $html = '<div class="post_tags">';
+        $html = '<div class="post_tags">\n';
 
         $tags = get_tags(array(
               'taxonomy' => 'post_tag',
               'orderby' => 'count'));
 
-        $html .= '  <h2> class="post_tags">Tags by Popularity</h2>';
+        $html .= '  <h2 class="post_tags">Tags by Popularity</h2>\n';
 
         $html .= $this->list_of_tags($tags);
 
@@ -47,11 +47,11 @@ class BlogTags {
               'taxonomy' => 'post_tag',
               'orderby' => 'name'));
 
-        $html .= '  <h2> class="post_tags">Tags by Name</h2>';
+        $html .= '  <h2 class="post_tags">Tags by Name</h2>\n';
 
         $html .= $this->list_of_tags($tags);
 
-        $html .= '</div>';
+        $html .= '</div>\n';
         echo $html;
     }
 
