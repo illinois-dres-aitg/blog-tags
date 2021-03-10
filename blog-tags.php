@@ -19,15 +19,14 @@ class BlogTags {
     }
 
     function register_post_type() {
-        register_post_type('blog_tags',
+        register_post_type('blog-tags',
             array(
                 'labels'      => array(
                     'name'          => __('Blog Tags', 'textdomain'),
                     'singular_name' => __('Blog Tag', 'textdomain'),
                 ),
-                    'public'      => true,
-                    'has_archive' => true,
-                    'rewrite'     => array( 'slug' => 'all-blog-tags' ), // my custom slug
+                'public'      => true,
+                'has_archive' => true
             )
         );
     }
