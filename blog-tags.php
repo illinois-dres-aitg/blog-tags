@@ -19,7 +19,7 @@ class BlogTags {
     }
 
     function register_post_type() {
-        register_post_type('blog-tags',
+        register_post_type('aitg-blog-tags',
             array(
                 'labels'      => array(
                     'name'          => __('Blog Tags', 'textdomain'),
